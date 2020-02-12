@@ -1,14 +1,5 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
 
-let menuItems = [
-  'Students',
-  'Faculty',
-  "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
-];
-
 /* 
 
   Step 1: Write a function that will create a menu component as seen below:
@@ -34,23 +25,64 @@ let menuItems = [
   
 */
 
-function menuMaker(arr){
+let menuItems = [
+  'Students',
+  'Faculty',
+  "What's New",
+  'Tech Trends',
+  'Music',
+  'Log Out'
+];
 
-const menu = document.createElement('div');
-const menuUl = document.createElement('ul');
+function menuMaker(arr) {
 
-menu.classList.add('menu');
-arr.map(item => {
-  let x = document.createElement('li');
-  x.textContent = item;
-  menuUl.appendChild(x);
-});
+  let menu = document.createElement('div');
+  let menuUl = document.createElement('ul');
 
-return menu;
+  menu.appendChild(menuUl);
+  menu.classList.add('menu');
+
+  arr.forEach(item => {
+    let str = document.createElement('li');
+    str.textContent = item;
+    menuUl.appendChild(str);
+  })
+
+  let menuBtn = document.querySelector('.menu-button');
+  menuBtn.addEventListener('click', () => {
+    menu.classList.toggle('menu--open');
+  });
+
+  return menu;
 
 }
 
-let menuParent = document.querySelector('ul');
-menuItems.map(item => {
-menuParent.appendChild(meuMaker);
-});
+let menuParent = document.querySelector('.header');
+
+menuParent.appendChild(menuMaker(menuItems));
+
+// function menuMaker(arr){
+
+// const menu = document.createElement('div');
+// const menuUl = document.createElement('ul');
+
+// menu.classList.add('menu');
+// arr.map(item => {
+//   let x = document.createElement('li');
+//   x.textContent = item;
+//   menuUl.appendChild(x);
+// });
+
+// let menuButton = document.querySelector('.menu-button');
+// menuButton.addEventListener('click', () => {
+//   menu.classList.toggle('menu--open');
+// });
+
+// return menu;
+
+// }
+
+// let menuParent = document.querySelector('ul');
+// menuItems.map(item => {
+// menuParent.appendChild(menuMaker());
+// });
